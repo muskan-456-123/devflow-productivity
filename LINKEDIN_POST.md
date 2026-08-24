@@ -2,16 +2,16 @@
 
 I’ve completed **Task 1: Developer Productivity Dashboard** for the Innovation Hacks Full Stack Development Internship.
 
-I built **DevFlow**, a responsive developer productivity dashboard designed around the idea that work should feel visible, focused, and human. Instead of using a generic dashboard layout, I created a “Kinetic Workbench” interface with an engineering-notebook visual system, Flow Orange momentum signals, structured project runways, and a focused task queue.
+I built **DevFlow**, a responsive productivity workspace for developers. I took inspiration from calm, visual productivity tools but created an original Soft Signal Studio system: cloud-grey boards, periwinkle navigation, a custom paper-studio illustration, calibration bands, and Flow Orange for live momentum signals.
 
-The dashboard includes responsive desktop and mobile layouts, accessible navigation and profile controls, project and task cards, segmented progress indicators, client-side search and filtering, and loading, empty, and error states for the dynamic task area. I built it with React, TypeScript, Tailwind CSS, and reusable components.
+The dashboard includes desktop and mobile layouts, accessible navigation, profile context, a functional focus timer, a calendar, task search and state filters, task completion controls, and loading, empty, and error states. I built it with React, TypeScript, Tailwind CSS, and reusable components.
 
-The part I learned most from was designing state handling as part of the product experience rather than treating it as an afterthought. I also made sure the project structure can evolve into the API and database tasks that follow in this internship.
+My biggest takeaway was learning to design state handling as part of a real product experience. I also kept the frontend structured so Tasks 2–4 can connect the dashboard to the API, database, authentication, and AI feature that come next.
 
 Repository: **[add GitHub repository link]**  
 Live demo: **[add optional deployment link]**  
 Demo video: **[add video link]**
 
-Thank you to **Innovation Hacks** for the task brief and learning opportunity. Please tag the official Innovation Hacks LinkedIn page before publishing.
+Thank you to **Innovation Hacks** for the learning opportunity. Please tag the official Innovation Hacks LinkedIn page before publishing.
 
 #FullStackDevelopment #ReactJS #TypeScript #TailwindCSS #WebDevelopment #FrontendDevelopment #InnovationHacks

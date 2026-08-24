@@ -224,6 +224,13 @@ export default defineConfig({
     port: 3000,
     strictPort: false, // Will find next available port if 3000 is busy
     host: true,
+    // The managed preview terminates TLS at port 443 and proxies traffic to Vite on port 3000.
+    // Pinning the HMR client to the public HTTPS port prevents a browser from attempting a direct,
+    // non-proxied WebSocket connection back to the sandbox server.
+    hmr: {
+      protocol: "wss",
+      clientPort: 443,
+    },
     allowedHosts: [
       ".manuspre.computer",
       ".manus.computer",

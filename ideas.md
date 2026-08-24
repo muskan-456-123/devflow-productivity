@@ -63,3 +63,16 @@ The DevFlow mark is a simple **offset orbital bracket**: two warm orange strokes
 - **Flow Orange (#FF6B2C)** is reserved for active momentum: current navigation, primary actions, live progress, key status numerals, and urgent next-step signals.
 - Decorative imagery is always framed as a tactile studio artifact through paper rules, rails, meters, and labels; it is never treated as a glossy generic SaaS illustration.
 - The project runway deliberately varies the first project’s format so the page reads as a daily workboard with hierarchy rather than a field of identical cards.
+
+## Reference-Inspired Redesign Specification
+
+The user supplied a productivity-dashboard reference that establishes the desired high-level composition: a quiet left navigation rail, a daily overview with a visual scene and small statistic tiles, a focused work timer, an upcoming-task list, a compact calendar, and a profile area. The redesign treats that structure as the reference point while retaining **DevFlow** as an original product.
+
+DevFlow will shift from the warm editorial workbench into **Soft Signal Studio**: a cloud-grey workspace with clean white boards, periwinkle and orchid as calm orientation colors, and Flow Orange restricted to urgent momentum. Its visual scene will be a unique floating “signal garden” of paper tabs, pins, and soft-focus light rather than the reference’s sun-and-mountain composition. The focus surface will use a circular time dial and original microcopy; task names, profile identity, marks, animations, and content remain distinct. The dashboard continues to include search, filters, accessible navigation, and loading/empty/error states so it satisfies Task 1 beyond the reference’s static composition.
+
+### Soft Signal Studio — Reinforced DevFlow Rules
+
+- Every major board carries a **Kinetic Workbench** cue: an annotation line, stamped metadata, calibration strip, dot matrix, or segmented live-progress band.
+- Periwinkle provides spatial orientation and quiet focus. **Flow Orange** is never decorative: it marks the live focus action, an urgent developer signal, a current progress segment, or a task-capture action.
+- The daily header and key score use DM Serif Display for editorial contrast. Operational labels, figures, navigation, task metadata, and controls use compact Space Grotesk with specific developer language about commits, reviews, threads, release checks, and blockers.
+- At desktop width, the agenda remains a narrow right-side signal stack while the focus timer and calendar form an uneven instrument pair. This keeps the composition distinct from a uniform dashboard-card grid.

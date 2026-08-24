@@ -1,5 +1,12 @@
 # Task 1 Delivery Checklist
 
+## Reference-inspired redesign
+
+- [x] Repair the development preview WebSocket connection and confirm preview reloads correctly.
+- [x] Recompose the dashboard into an original visual workspace with a daily overview, upcoming task list, focus timer, calendar, and profile rail.
+- [x] Preserve distinct DevFlow branding, original artwork, copy, and interaction states while using the reference only for broad layout inspiration.
+- [x] Verify the refreshed desktop and mobile layouts, then update project documentation and save a delivery checkpoint.
+
 - [x] Implement the responsive dashboard home view with a persistent desktop work rail and mobile navigation.
 - [x] Build reusable navigation, profile, project, task, progress, filter, and state components.
 - [x] Add client-side task search, project/status filters, task completion actions, and contextual feedback.

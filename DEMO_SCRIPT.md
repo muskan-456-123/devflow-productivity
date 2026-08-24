@@ -1,24 +1,16 @@
 # DevFlow Task 1 — Demo Video Script
 
-This script is designed for a **2–5 minute** screen-recorded walkthrough. It explains both the visible product decisions and the frontend engineering choices that Innovation Hacks asks reviewers to evaluate.
+This plan creates a **2–5 minute** recording that demonstrates both the visual experience and the Task 1 frontend requirements. Begin at desktop width, then resize to a narrow mobile viewport near the end.
 
-## Recording Setup
-
-Open the DevFlow dashboard at desktop width first. Keep the browser address bar hidden if possible, use a readable zoom level, and avoid background notifications. Then resize to a narrow mobile viewport for the responsive segment.
-
-## Suggested Narration
-
-| Time | Screen action | Narration |
+| Time | Screen action | Suggested narration |
 | --- | --- | --- |
-| 0:00–0:25 | Start on the desktop dashboard and pause on the overall page. | “This is DevFlow, a Developer Productivity Dashboard built for Innovation Hacks Task 1. I designed it as a Kinetic Workbench, so the interface uses an engineering-notebook system rather than a generic admin layout.” |
-| 0:25–0:55 | Point out the work rail, profile control, focus block, and project runway. | “The main dashboard includes accessible navigation, a profile area, a daily focus recommendation, active projects, task progress, and weekly productivity information. Flow Orange consistently marks active momentum and next actions.” |
-| 0:55–1:30 | Click the Atlas project card, then search for `keyboard` or `API`. | “The task queue is interactive. Project cards filter the queue, and search filters against task title, project, tags, and assignee immediately on the client.” |
-| 1:30–1:55 | Select a status filter such as Ready, then clear it. | “Status controls work alongside search and project filters, so the component supports realistic combined filtering rather than only static cards.” |
-| 1:55–2:20 | Mark a task complete with its checkbox. | “Completing a task updates the task state and the daily completion signal in the right rail, demonstrating local state management and a responsive product interaction.” |
-| 2:20–2:55 | Open the queue overflow menu and select Loading, Empty, then Error. | “The dashboard includes deliberate loading, empty, and error states. I included a state preview control so each condition is easy to test and demonstrate.” |
-| 2:55–3:25 | Resize to mobile width and open the mobile menu. | “On mobile, the desktop rail becomes a compact header and navigation drawer. The dashboard reduces to a single-column reading order while preserving the key controls and task interactions.” |
-| 3:25–3:45 | End on the complete dashboard. | “The frontend uses React, TypeScript, Tailwind CSS, and reusable components for the navigation, projects, progress bands, task queue, and dashboard shell. Tasks 2 through 4 can replace the current mock data with the API and database layers.” |
+| 0:00–0:25 | Pause on the complete desktop workspace. | “This is DevFlow, my Developer Productivity Dashboard for Innovation Hacks Task 1. The design is called Soft Signal Studio: it is calm and visual, while still using developer-specific workbench cues such as branch status, calibration bands, and commit signals.” |
+| 0:25–0:50 | Point out the work rail, profile block, header, visual overview, and current queue. | “The dashboard has accessible navigation, a personal profile context, a daily overview, a focus instrument, a calendar, and an upcoming developer task queue.” |
+| 0:50–1:20 | Use the orange focus action to start the timer, then pause it. | “The focus session is interactive. It counts down from 28 minutes, uses a live calibrated progress band, and can be paused or reset.” |
+| 1:20–1:55 | Search for `API`, select the Open filter, and toggle a task complete. | “The task queue supports instant client-side search and state filters. Completing a task updates the queue state, while the styling keeps the active next action visually clear.” |
+| 1:55–2:25 | Click the queue overflow control until loading, empty, and error states appear. | “Task 1 specifically asks for sensible loading, empty, and error states. I made them easy to demonstrate from the queue controls without requiring a live backend.” |
+| 2:25–2:50 | Point out the original illustrated signal garden and the calendar marker. | “The overview artwork is an original Soft Signal Studio asset. It uses paper tabs, pins, and planning artifacts rather than copying the reference imagery.” |
+| 2:50–3:20 | Resize to mobile width and open the menu. | “On mobile, the desktop rail becomes a compact navigation menu, and the entire workspace stacks into a readable single-column flow.” |
+| 3:20–3:40 | Return to the desktop workspace and end on the full page. | “The frontend uses React, TypeScript, Tailwind CSS, reusable components, and typed local state. Later internship tasks can replace the local data with the API and database layers.” |
 
-## Final Frame
-
-End with the dashboard at desktop width, with the task queue visible. Add your repository URL and optional deployment URL as text in the video description rather than on the dashboard itself.
+End the video with the live dashboard visible, and put your GitHub repository, optional deployment link, and demo link in the video description.

@@ -1,16 +1,15 @@
 /**
- * Kinetic Workbench navigation: a practical work rail with an orange tempo marker.
+ * Soft Signal Studio navigation: a quiet personal workspace rail with original DevFlow rhythm cues.
  */
-import { Bell, CircleHelp, Gauge, LayoutPanelTop, ListTodo, Settings, Sparkles } from "lucide-react";
-import { navigation } from "@/lib/dashboard-data";
+import { Bell, CalendarDays, CircleHelp, Command, LayoutPanelTop, ListTodo, Settings, TimerReset } from "lucide-react";
 import { DevflowMark } from "./DevflowMark";
 
-const navIcons = {
-  today: LayoutPanelTop,
-  projects: Gauge,
-  tasks: ListTodo,
-  activity: Bell,
-};
+const navItems = [
+  { label: "Overview", key: "today", icon: LayoutPanelTop },
+  { label: "My tasks", key: "tasks", icon: ListTodo, count: "6" },
+  { label: "Calendar", key: "projects", icon: CalendarDays },
+  { label: "Focus space", key: "activity", icon: TimerReset },
+];
 
 type DashboardSidebarProps = {
   activeNav: string;
@@ -19,56 +18,51 @@ type DashboardSidebarProps = {
 
 export function DashboardSidebar({ activeNav, onNavChange }: DashboardSidebarProps) {
   return (
-    <aside className="hidden h-screen w-[244px] shrink-0 flex-col border-r border-[#D8D3CA] bg-[#F7F4EE] px-4 py-5 lg:flex">
-      <DevflowMark withWordmark className="mb-10 px-2" />
+    <aside className="hidden w-[248px] shrink-0 xl:block">
+      <div className="sticky top-5 flex min-h-[calc(100vh-40px)] flex-col rounded-[30px] bg-white p-5 shadow-[0_20px_45px_rgba(83,79,108,0.08)]">
+        <DevflowMark withWordmark className="mb-9 px-1" />
 
-      <div className="mb-3 px-2 text-[10px] font-bold tracking-[0.17em] text-[#7F8789]">WORKSPACE</div>
-      <nav className="space-y-1" aria-label="Main navigation">
-        {navigation.map((item) => {
-          const Icon = navIcons[item.key];
-          const isActive = activeNav === item.key;
-          return (
-            <button
-              key={item.key}
-              type="button"
-              onClick={() => onNavChange(item.key)}
-              className={`group relative flex h-11 w-full items-center gap-3 rounded-xl px-3 text-left text-[14px] font-medium transition duration-200 ease-out active:scale-[0.98] ${
-                isActive ? "bg-[#13202E] text-[#F7F4EE] shadow-[0_8px_20px_rgba(19,32,46,0.12)]" : "text-[#596164] hover:bg-[#EDE9E1] hover:text-[#13202E]"
-              }`}
-              aria-current={isActive ? "page" : undefined}
-            >
-              {isActive && <span className="absolute -left-4 h-5 w-1 rounded-r-full bg-[#FF6B2C]" />}
-              <Icon className="size-[17px]" strokeWidth={isActive ? 2.2 : 1.8} />
-              <span>{item.label}</span>
-              {item.key === "tasks" && <span className={`ml-auto rounded-full px-2 py-0.5 text-[10px] ${isActive ? "bg-white/10 text-white" : "bg-[#E3DED5] text-[#596164]"}`}>4</span>}
-            </button>
-          );
-        })}
-      </nav>
+        <nav className="space-y-1.5" aria-label="Workspace navigation">
+          {navItems.map(({ label, key, icon: Icon, count }) => {
+            const active = activeNav === key;
+            return (
+              <button
+                key={key}
+                type="button"
+                onClick={() => onNavChange(key)}
+                className={`flex h-11 w-full items-center gap-3 rounded-xl px-3 text-left text-[13px] font-semibold transition duration-200 active:scale-[0.98] ${
+                  active ? "bg-[#7765C8] text-white shadow-[0_9px_18px_rgba(119,101,200,0.22)]" : "text-[#67647A] hover:bg-[#F5F4FA] hover:text-[#3A3750]"
+                }`}
+                aria-current={active ? "page" : undefined}
+              >
+                <Icon className="size-[16px]" strokeWidth={active ? 2.3 : 1.9} />
+                <span>{label}</span>
+                {count && <span className={`ml-auto rounded-full px-1.5 py-0.5 text-[9px] font-bold ${active ? "bg-white/16 text-white" : "bg-[#F0EEF7] text-[#7765C8]"}`}>{count}</span>}
+              </button>
+            );
+          })}
+        </nav>
 
-      <div className="mt-auto rounded-2xl border border-[#E2DDD4] bg-[#FFFCF7] p-3.5 shadow-[0_8px_20px_rgba(37,41,42,0.04)]">
-        <div className="mb-3 flex items-center justify-between">
-          <span className="text-[10px] font-bold tracking-[0.16em] text-[#7F8789]">WEEKLY TEMPO</span>
-          <Sparkles className="size-3.5 text-[#FF6B2C]" />
+        <section className="workbench-cue relative mt-7 overflow-hidden rounded-2xl bg-[#302A5B] p-4 text-white" aria-labelledby="pulse-note-title">
+          <div className="absolute -right-5 -top-6 size-24 rounded-full bg-[#D9BBFF]/50 blur-xl" />
+          <div className="absolute bottom-0 right-0 size-16 rounded-tl-full border-l border-t border-white/15" />
+          <div className="relative">
+            <div className="mb-3 flex items-center justify-between"><span className="flex size-7 items-center justify-center rounded-lg bg-white/12"><Command className="size-3.5 text-[#D9BBFF]" /></span><span className="text-[9px] font-bold tracking-[0.15em] text-[#CFC8F5]">PULSE CHECK</span></div>
+            <h2 id="pulse-note-title" className="text-[15px] font-bold tracking-[-0.04em]">Protect your review window.</h2>
+            <p className="mt-1.5 text-[11px] leading-4 text-[#D5D1EC]">Your next clean commit window starts in 24 minutes.</p>
+            <button type="button" className="mt-4 rounded-lg bg-[#FF6B2C] px-3 py-2 text-[10px] font-bold tracking-[0.05em] text-white transition hover:bg-[#E75B20]">OPEN FOCUS SPACE</button>
+          </div>
+        </section>
+
+        <div className="mt-auto border-t border-[#ECEAF2] pt-4">
+          <button type="button" className="flex items-center gap-2 px-2 text-[11px] font-semibold text-[#8A8799] transition hover:text-[#433D71]"><CircleHelp className="size-4" /> Help centre</button>
+          <button type="button" className="mt-3 flex items-center gap-2 px-2 text-[11px] font-semibold text-[#8A8799] transition hover:text-[#433D71]"><Settings className="size-4" /> Preferences</button>
+          <div className="mt-5 flex items-center gap-2.5 rounded-xl bg-[#F8F7FB] p-2.5">
+            <span className="flex size-8 items-center justify-center rounded-xl bg-[#302A5B] text-[9px] font-bold text-white">AC</span>
+            <span className="min-w-0 flex-1"><span className="block truncate text-[11px] font-bold text-[#403C55]">Ava Chen</span><span className="mt-0.5 block truncate text-[9px] text-[#8A8799]">Personal workspace</span></span>
+            <Bell className="size-3.5 text-[#7765C8]" />
+          </div>
         </div>
-        <div className="flex items-end gap-1.5" aria-label="Weekly productivity, 84 percent">
-          {[42, 57, 45, 72, 82, 68, 92].map((height, index) => (
-            <span key={index} className="flex h-10 flex-1 items-end rounded-sm bg-[#F0ECE4] px-[2px]">
-              <span className={`w-full rounded-sm ${index === 6 ? "bg-[#FF6B2C]" : "bg-[#AEB9BA]"}`} style={{ height: `${height}%` }} />
-            </span>
-          ))}
-        </div>
-        <p className="mt-3 text-[13px] font-medium text-[#13202E]">84% in a steady rhythm</p>
-        <p className="mt-0.5 text-[11px] leading-4 text-[#7F8789]">+12% over last week</p>
-      </div>
-
-      <div className="mt-4 flex items-center justify-between px-2">
-        <button type="button" className="flex items-center gap-2 text-xs font-medium text-[#7F8789] transition hover:text-[#13202E]" aria-label="Open help">
-          <CircleHelp className="size-4" /> Help
-        </button>
-        <button type="button" className="rounded-lg p-1.5 text-[#7F8789] transition hover:bg-[#EDE9E1] hover:text-[#13202E]" aria-label="Open settings">
-          <Settings className="size-4" />
-        </button>
       </div>
     </aside>
   );

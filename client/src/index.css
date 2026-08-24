@@ -1,5 +1,5 @@
 /*
- * Kinetic Workbench global foundation: warm mineral surfaces, deep ink typography, and Flow Orange as the sole momentum signal.
+ * Soft Signal Studio global foundation: cloud-grey surroundings, gentle white boards, periwinkle orientation, and Flow Orange for only active urgency.
  */
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -33,61 +33,68 @@
 }
 
 :root {
-  --radius: 0.8rem;
-  --background: #F2EFE8;
-  --foreground: #13202E;
-  --card: #FFFCF7;
-  --card-foreground: #13202E;
-  --popover: #FFFCF7;
-  --popover-foreground: #13202E;
-  --primary: #13202E;
+  --radius: 0.9rem;
+  --background: #EEF0F6;
+  --foreground: #353248;
+  --card: #FFFFFF;
+  --card-foreground: #353248;
+  --popover: #FFFFFF;
+  --popover-foreground: #353248;
+  --primary: #7765C8;
   --primary-foreground: #FFFFFF;
-  --secondary: #ECE8E0;
-  --secondary-foreground: #263235;
-  --muted: #F2EFE8;
-  --muted-foreground: #7F8789;
-  --accent: #EDE9E1;
-  --accent-foreground: #13202E;
-  --destructive: #B54B49;
+  --secondary: #F4F3F8;
+  --secondary-foreground: #514D62;
+  --muted: #F4F3F8;
+  --muted-foreground: #8B8798;
+  --accent: #F0EDFB;
+  --accent-foreground: #5D4EAB;
+  --destructive: #B85D72;
   --destructive-foreground: #FFFFFF;
-  --border: #E2DDD4;
-  --input: #DFD9D0;
-  --ring: #FF6B2C;
+  --border: #ECEAF2;
+  --input: #E8E5EF;
+  --ring: #7765C8;
 }
 
 @layer base {
   * { @apply border-border outline-ring/50; }
-  html { min-width: 320px; background: #F2EFE8; }
+  html { min-width: 320px; background: #EEF0F6; }
   body { @apply bg-background text-foreground; font-family: "Space Grotesk", sans-serif; }
   button:not(:disabled), [role="button"]:not([aria-disabled="true"]), [type="button"]:not(:disabled), [type="submit"]:not(:disabled), [type="reset"]:not(:disabled), a[href], select:not(:disabled), input[type="checkbox"]:not(:disabled), input[type="radio"]:not(:disabled) { @apply cursor-pointer; }
-  ::selection { background: rgba(255, 107, 44, 0.22); color: #13202E; }
+  ::selection { background: rgba(119, 101, 200, 0.18); color: #353248; }
 }
 
 @layer components {
-  .font-display { font-family: "DM Serif Display", Georgia, serif; }
-  .workbench-surface {
-    background-image: linear-gradient(to bottom, rgba(19, 32, 46, 0.028) 1px, transparent 1px);
-    background-size: 100% 26px;
+  .workbench-cue {
+    position: relative;
   }
-  .workbench-surface::before {
+  .workbench-cue::before {
     content: "";
-    position: absolute;
-    inset: 8px 10px auto auto;
-    width: 14px;
-    height: 4px;
-    border-top: 1px solid rgba(19, 32, 46, 0.16);
-    border-bottom: 1px solid rgba(19, 32, 46, 0.16);
-    opacity: 0.72;
     pointer-events: none;
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    top: 18px;
+    border-top: 1px solid rgba(92, 82, 125, 0.08);
+  }
+  .workbench-cue::after {
+    content: "···";
+    pointer-events: none;
+    position: absolute;
+    right: 18px;
+    bottom: 14px;
+    color: rgba(119, 101, 200, 0.22);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  main > * { animation: devflow-rise 450ms cubic-bezier(0.23, 1, 0.32, 1) both; }
-  main > *:nth-child(2) { animation-delay: 45ms; }
+  main > * { animation: soft-signal-enter 420ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+  main > *:nth-child(2) { animation-delay: 50ms; }
 }
 
-@keyframes devflow-rise {
+@keyframes soft-signal-enter {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
