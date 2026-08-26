@@ -6,15 +6,20 @@ export type MoodPalette = {
   overlay: string;
   overlayAlpha: number;
   ambient: string;
+  ambientIntensity: number;
+  daylightIntensity: number;
   lamp: string;
+  lampIntensity: number;
+  exposure: number;
+  glowIntensity: number;
   accent: string;
   glow: string;
 };
 
 export const moodPalettes: Record<DreamMood, MoodPalette> = {
-  morning: { sky: "#DDECF3", overlay: "#FFE9C4", overlayAlpha: 0.08, ambient: "#FFF6E1", lamp: "#FFD495", accent: "#8797E8", glow: "#FFF0C7" },
-  sunset: { sky: "#776A9A", overlay: "#F6A1A7", overlayAlpha: 0.16, ambient: "#F6E5FF", lamp: "#FFBA76", accent: "#A790DF", glow: "#FFD1A6" },
-  night: { sky: "#182444", overlay: "#273563", overlayAlpha: 0.34, ambient: "#B7B9F5", lamp: "#FFD399", accent: "#8C94FF", glow: "#BDBAFF" },
-  rain: { sky: "#3F506B", overlay: "#657B95", overlayAlpha: 0.33, ambient: "#C6DBE7", lamp: "#F5C992", accent: "#91B8CA", glow: "#B6D3E0" },
-  cozy: { sky: "#5C3851", overlay: "#A1554F", overlayAlpha: 0.22, ambient: "#FFE7C3", lamp: "#FF9B50", accent: "#D9835B", glow: "#FFC785" },
+  morning: { sky: "#C9D6E4", overlay: "#FFE3B7", overlayAlpha: 0.12, ambient: "#FFF0D8", ambientIntensity: 0.40, daylightIntensity: 0.22, lamp: "#FFD398", lampIntensity: 2.5, exposure: 0.56, glowIntensity: 0.09, accent: "#8797E8", glow: "#FFF0C7" },
+  sunset: { sky: "#655679", overlay: "#C87891", overlayAlpha: 0.20, ambient: "#E8D5EF", ambientIntensity: 0.38, daylightIntensity: 0.12, lamp: "#FFAF68", lampIntensity: 3.8, exposure: 0.54, glowIntensity: 0.11, accent: "#A790DF", glow: "#FFD1A6" },
+  night: { sky: "#101A35", overlay: "#243965", overlayAlpha: 0.42, ambient: "#8698D4", ambientIntensity: 0.22, daylightIntensity: 0.045, lamp: "#FFAD62", lampIntensity: 7.8, exposure: 0.56, glowIntensity: 0.15, accent: "#9EA9FF", glow: "#FFD29A" },
+  rain: { sky: "#2C3A55", overlay: "#485A73", overlayAlpha: 0.40, ambient: "#A1BED0", ambientIntensity: 0.28, daylightIntensity: 0.05, lamp: "#F0BE7C", lampIntensity: 4.4, exposure: 0.50, glowIntensity: 0.10, accent: "#91B8CA", glow: "#B6D3E0" },
+  cozy: { sky: "#432B42", overlay: "#8D4A49", overlayAlpha: 0.28, ambient: "#FFD7A9", ambientIntensity: 0.30, daylightIntensity: 0.05, lamp: "#FF963F", lampIntensity: 6.8, exposure: 0.53, glowIntensity: 0.15, accent: "#D9835B", glow: "#FFC785" },
 };

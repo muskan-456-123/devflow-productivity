@@ -28,18 +28,20 @@ export class DreamDeskWorld {
   private readonly ambient: HemisphericLight;
   private readonly daylight: DirectionalLight;
   private readonly lamp: PointLight;
+  private readonly moonFill: PointLight;
   private readonly glow: GlowLayer;
   private readonly objects = new Map<DreamDeskTarget, Interactable>();
   private room!: RoomBuild;
   private desiredTarget = new Vector3(0.2, 1.8, 1.55);
   private activeKey: DreamDeskTarget = "room";
   private mood: DreamMood = "sunset";
+  private lampBaseIntensity = 5.8;
   private elapsed = 0;
 
   constructor(private readonly scene: Scene, private readonly canvas: HTMLCanvasElement, private readonly events: DreamDeskEvents) {
     scene.clearColor = new Color4(0.23, 0.19, 0.37, 1);
-    scene.imageProcessingConfiguration.exposure = 0.72;
-    scene.imageProcessingConfiguration.contrast = 1.08;
+    scene.imageProcessingConfiguration.exposure = 0.52;
+    scene.imageProcessingConfiguration.contrast = 1.12;
     this.camera = new ArcRotateCamera("dreamDeskCamera", -Math.PI / 2 + 0.12, 1.0, 10.8, this.desiredTarget.clone(), scene);
     this.camera.lowerRadiusLimit = 9;
     this.camera.upperRadiusLimit = 12.2;
@@ -50,15 +52,19 @@ export class DreamDeskWorld {
     this.camera.attachControl(canvas, true);
 
     this.ambient = new HemisphericLight("ambient", new Vector3(0, 1, 0), scene);
-    this.ambient.intensity = 0.74;
+    this.ambient.intensity = 0.34;
     this.daylight = new DirectionalLight("daylight", new Vector3(-0.35, -1, 0.15), scene);
     this.daylight.position = new Vector3(0, 7, -4);
-    this.daylight.intensity = 0.28;
+    this.daylight.intensity = 0.11;
     this.lamp = new PointLight("deskLamp", new Vector3(-2.65, 2.65, 1.2), scene);
-    this.lamp.intensity = 7;
-    this.lamp.range = 6;
+    this.lamp.intensity = 5.8;
+    this.lamp.range = 3.45;
+    this.moonFill = new PointLight("moonFill", new Vector3(0.7, 4.7, 0.4), scene);
+    this.moonFill.diffuse = Color3.FromHexString("#7794D4");
+    this.moonFill.intensity = 0.22;
+    this.moonFill.range = 11;
     this.glow = new GlowLayer("softGlow", scene);
-    this.glow.intensity = 0.18;
+    this.glow.intensity = 0.11;
 
     this.room = createDreamRoom(scene, this.registerObject);
     this.setMood("sunset");
@@ -93,12 +99,21 @@ export class DreamDeskWorld {
     this.mood = mood;
     const palette = moodPalettes[mood];
     const sky = Color3.FromHexString(palette.sky);
-    this.scene.clearColor = new Color4(sky.r * 0.7, sky.g * 0.7, sky.b * 0.7, 1);
+    this.scene.clearColor = new Color4(sky.r * 0.62, sky.g * 0.62, sky.b * 0.62, 1);
+    this.scene.imageProcessingConfiguration.exposure = palette.exposure;
     this.room.windowOverlay.diffuseColor = Color3.FromHexString(palette.overlay);
     this.room.windowOverlay.alpha = palette.overlayAlpha;
-    this.ambient.diffuse = Color3.FromHexString(palette.ambient).scale(0.72);
-    this.daylight.diffuse = Color3.FromHexString(palette.ambient).scale(0.56);
+    this.ambient.diffuse = Color3.FromHexString(palette.ambient).scale(0.65);
+    this.ambient.intensity = palette.ambientIntensity;
+    this.daylight.diffuse = Color3.FromHexString(palette.ambient).scale(0.4);
+    this.daylight.intensity = palette.daylightIntensity;
     this.lamp.diffuse = Color3.FromHexString(palette.lamp);
+    this.lampBaseIntensity = palette.lampIntensity;
+    this.lamp.intensity = palette.lampIntensity;
+    this.lamp.range = mood === "night" ? 3.85 : 3.45;
+    this.moonFill.diffuse = Color3.FromHexString(mood === "night" ? "#7288CB" : mood === "rain" ? "#819FB7" : palette.ambient);
+    this.moonFill.intensity = mood === "night" ? 1.15 : mood === "rain" ? 0.55 : 0.16;
+    this.glow.intensity = palette.glowIntensity;
     this.room.accentMaterials.forEach((mat, index) => {
       const tint = Color3.FromHexString(index % 2 === 0 ? palette.accent : palette.glow);
       mat.emissiveColor = tint.scale(index === 0 ? 0.13 : 0.06);
@@ -121,7 +136,7 @@ export class DreamDeskWorld {
       mesh.position.x = base.x + Math.cos(this.elapsed * 0.8 + phase) * range * 0.35;
       mesh.scaling.y = 1 + Math.sin(this.elapsed * 1.4 + phase) * 0.08;
     });
-    this.lamp.intensity = 6.7 + Math.sin(this.elapsed * 1.3) * 0.45;
+    this.lamp.intensity = this.lampBaseIntensity + Math.sin(this.elapsed * 1.3) * (this.mood === "night" ? 0.85 : 0.32);
   }
 
   dispose() {

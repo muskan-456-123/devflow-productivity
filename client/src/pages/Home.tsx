@@ -6,13 +6,17 @@ import type { Task } from "@/lib/dashboard-data";
 import { dreamTasks, type DreamDeskTarget, type DreamMood } from "@/lib/dreamdesk-data";
 
 export default function Home() {
+  const searchParams = new URLSearchParams(window.location.search);
   const [active, setActive] = useState<DreamDeskTarget>(() => {
-    const demo = new URLSearchParams(window.location.search).get("demo");
+    const demo = searchParams.get("demo");
     const targets: DreamDeskTarget[] = ["computer", "calendar", "pomodoro", "bookshelf", "plant", "coffee", "window", "statistics"];
     return demo && targets.includes(demo as DreamDeskTarget) ? demo as DreamDeskTarget : demo !== null ? "computer" : "room";
   });
   const [hover, setHover] = useState<DreamDeskTarget | null>(null);
-  const [mood, setMood] = useState<DreamMood>("sunset");
+  const [mood, setMood] = useState<DreamMood>(() => {
+    const requestedMood = searchParams.get("mood") as DreamMood | null;
+    return ["morning", "sunset", "night", "rain", "cozy"].includes(requestedMood ?? "") ? requestedMood as DreamMood : "sunset";
+  });
   const [tasks, setTasks] = useState<Task[]>(dreamTasks);
   const [focusSeconds, setFocusSeconds] = useState(25 * 60);
   const [focusRunning, setFocusRunning] = useState(false);

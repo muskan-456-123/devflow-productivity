@@ -15,6 +15,13 @@
 - [x] Implement initial object selection, contextual tooltips, task panel, calendar panel, focus timer panel, and environment mood controls.
 - [x] Verify desktop and tablet rendering, keyboard and pointer interactions, and the initial dashboard milestone.
 
+## DreamDesk lighting refinement
+
+- [x] Reduce the room’s broad ambient brightness and eliminate the blown-out left-side lighting.
+- [x] Make Night Mode a distinct dark-blue scene with a warm desk-lamp pool of light and subtle night-window atmosphere.
+- [x] Strengthen bottom dock and HUD text contrast across the room moods.
+- [x] Verify the default and Night Mode scenes at desktop and tablet widths, then save the refined checkpoint.
+
 - [x] Implement the responsive dashboard home view with a persistent desktop work rail and mobile navigation.
 - [x] Build reusable navigation, profile, project, task, progress, filter, and state components.
 - [x] Add client-side task search, project/status filters, task completion actions, and contextual feedback.
