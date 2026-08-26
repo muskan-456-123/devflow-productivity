@@ -8,11 +8,12 @@ export type GameHandle = {
   scene: Scene;
   focus: (key: DreamDeskTarget) => void;
   setMood: (mood: DreamMood) => void;
+  setProgress: (completedCount: number) => void;
   dispose: () => void;
 };
 
 export async function createGameScene(engine: Engine, canvas: HTMLCanvasElement, events: DreamDeskEvents): Promise<GameHandle> {
   const scene = new Scene(engine);
   const world = new DreamDeskWorld(scene, canvas, events);
-  return { scene, focus: (key) => world.focus(key), setMood: (mood) => world.setMood(mood), dispose: () => world.dispose() };
+  return { scene, focus: (key) => world.focus(key), setMood: (mood) => world.setMood(mood), setProgress: (completedCount) => world.setProgress(completedCount), dispose: () => world.dispose() };
 }

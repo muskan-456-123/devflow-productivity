@@ -22,6 +22,13 @@
 - [x] Strengthen bottom dock and HUD text contrast across the room moods.
 - [x] Verify the default and Night Mode scenes at desktop and tablet widths, then save the refined checkpoint.
 
+## DreamDesk room progression
+
+- [x] Define earned room-upgrade milestones tied to completed task counts.
+- [x] Add visible 3D upgrades for the laptop, chair, desk décor, plant, and premium room atmosphere.
+- [x] Show progress, the next unlock, and an earned-upgrade moment in the HUD when a task is completed.
+- [x] Verify the base, mid-progress, and fully upgraded room states at desktop and tablet widths.
+
 - [x] Implement the responsive dashboard home view with a persistent desktop work rail and mobile navigation.
 - [x] Build reusable navigation, profile, project, task, progress, filter, and state components.
 - [x] Add client-side task search, project/status filters, task completion actions, and contextual feedback.

@@ -86,3 +86,7 @@ The supplied images are mood references only. DreamDesk retains original room ge
 ### Lighting and Legibility Refinement
 
 The default room must preserve a twilight-warm atmosphere without bloom or broad white illumination. Cream surfaces sit in a lower exposure range, while object definitions come from soft material contrast rather than an overpowered ambient wash. **Night Mode** is a genuinely darker midnight-blue study: the sky window cools down, general room light recedes, and the desk lamp creates a local amber pool that makes the chair, laptop, and focus clock feel especially inviting. Glass HUD surfaces retain translucency but use reliable foreground contrast; the lower dock carries a dark translucent backing and brighter icon labels so it remains readable over every floor and sky variation.
+
+### Room Progression System
+
+DreamDesk must show that accomplished work changes the environment. The progression is **care, not clutter**: each completed task earns one carefully placed upgrade that makes the study feel more supportive. The visual order is laptop warmth, plant growth and books, chair comfort, desk personality, and finally window lights with sky motes. No paid feature gates, points shops, or manipulative reward loops are used. A small, calm toast connects the completed task to its room upgrade, while the HUD states what is currently unlocked and what will appear next.

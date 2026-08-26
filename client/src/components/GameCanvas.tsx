@@ -9,16 +9,18 @@ import type { DreamDeskTarget, DreamMood } from "@/lib/dreamdesk-data";
 type GameCanvasProps = {
   focusKey: DreamDeskTarget;
   mood: DreamMood;
+  completedCount: number;
   onSelect: (key: DreamDeskTarget) => void;
   onHover: (key: DreamDeskTarget | null) => void;
 };
 
-export default function GameCanvas({ focusKey, mood, onSelect, onHover }: GameCanvasProps) {
+export default function GameCanvas({ focusKey, mood, completedCount, onSelect, onHover }: GameCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const startedRef = useRef(false);
   const handleRef = useRef<GameHandle | null>(null);
   const focusRef = useRef(focusKey);
   const moodRef = useRef(mood);
+  const progressRef = useRef(completedCount);
   const callbacksRef = useRef({ onSelect, onHover });
   callbacksRef.current = { onSelect, onHover };
 
@@ -33,6 +35,11 @@ export default function GameCanvas({ focusKey, mood, onSelect, onHover }: GameCa
   }, [mood]);
 
   useEffect(() => {
+    progressRef.current = completedCount;
+    handleRef.current?.setProgress(completedCount);
+  }, [completedCount]);
+
+  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || startedRef.current) return;
     startedRef.current = true;
@@ -45,6 +52,7 @@ export default function GameCanvas({ focusKey, mood, onSelect, onHover }: GameCa
       if (disposed) { handle.dispose(); return; }
       handleRef.current = handle;
       handle.setMood(moodRef.current);
+      handle.setProgress(progressRef.current);
       handle.focus(focusRef.current);
       engine.runRenderLoop(() => handle.scene.render());
     });

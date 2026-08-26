@@ -120,6 +120,10 @@ export class DreamDeskWorld {
     });
   }
 
+  setProgress(completedCount: number) {
+    this.room.setProgress(completedCount);
+  }
+
   private setHover(key: DreamDeskTarget | null) {
     this.objects.forEach((item, candidate) => {
       item.halo.isVisible = candidate === key || candidate === this.activeKey && this.activeKey !== "room";

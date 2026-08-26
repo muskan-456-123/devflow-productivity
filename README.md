@@ -4,6 +4,20 @@ DreamDesk is an original **interactive 3D productivity room** built for the Inno
 
 The current milestone delivers the fully interactive **DreamDesk dashboard foundation**: a responsive browser room built with Babylon.js, accessible HTML panels, typed task data, mood controls, an original visual direction, and visible Task 1 states.
 
+## Earned Room Progression
+
+Completed tasks now make the room itself more beautiful. The current chapter appears in the lower-left **Room Chapter** card, and the computer task list is the source of truth for the upgrades.
+
+| Completed tasks | Chapter | Room change |
+| --- | --- | --- |
+| 1 | Screen Bloom | A warmer laptop screen and lit keyboard come online. |
+| 2 | Green Corner | The plant grows extra leaves and a small book stack arrives. |
+| 3 | Better Seat | The chair gains a lavender cushion and supportive headrest. |
+| 4 | Collected Desk | A pencil cup and desk card personalise the workspace. |
+| 5 | Skyline Finish | Window lights and floating sky motes complete the room. |
+
+Completing a task gives a concise earned-upgrade message. Reopening a task rolls the corresponding room upgrade back, so the room always reflects the actual completed-task count. For deterministic review, append `?progress=0` through `?progress=5` to preview any room chapter.
+
 ## Experience Preview
 
 DreamDesk is designed as a warm, elevated diorama study with a twilight cloud view, lavender and cream materials, blush-pink details, and amber action cues. It is inspired by the supplied cozy-workspace references only at a broad mood level; the room geometry, visual assets, name, interactions, and productivity content are original.
@@ -52,14 +66,15 @@ pnpm run build
 | Path | Purpose |
 | --- | --- |
 | `client/src/components/GameCanvas.tsx` | Lifecycle-safe React wrapper for the full-screen Babylon canvas. |
-| `client/src/game/DreamDeskWorld.ts` | Camera focus, object selection, scene mood, prop animation, and cleanup. |
-| `client/src/game/roomFactory.ts` | Procedural study-room furniture, clickable objects, highlights, and window scene. |
+| `client/src/game/DreamDeskWorld.ts` | Camera focus, object selection, scene mood, task-driven room upgrades, prop animation, and cleanup. |
+| `client/src/game/roomFactory.ts` | Procedural study-room furniture, clickable objects, room-upgrade meshes, highlights, and window scene. |
 | `client/src/components/dreamdesk/DreamDeskHUD.tsx` | Glass navigation, profile, greeting, context tooltip, and stats chips. |
 | `client/src/components/dreamdesk/ProductivityPanels.tsx` | Accessible task, calendar, focus, notes, habits, break, mood, and statistics panels. |
 | `client/src/lib/dreamdesk-data.ts` | Typed room destinations, mood names, navigation, and task data. |
 | `PLAN.md` | Interaction risks and concrete verification criteria. |
 | `STRUCTURE.md` | Rendering, UI, and world ownership boundaries. |
 | `ASSETS.md` | Generated visual direction and the procedural room-asset map. |
+| `PROGRESSION.md` | The complete milestone-by-milestone room-upgrade plan. |
 
 ## What Comes Next
 

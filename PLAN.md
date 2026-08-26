@@ -20,6 +20,8 @@ DreamDesk is an original browser-based productivity room. The first milestone re
 
 The first DreamDesk room uses procedural geometry for a lightweight, reliable diorama. It includes a desk, laptop, calendar, pomodoro clock, coffee cup, plant, bookshelf, window, chair, floor, wall panel, lamp, clouds, and floating stat chips. Its palette starts in a warm sunset mood and can switch among Morning, Sunset, Night, Rain, and Cozy. A concise floating navigation bar provides an alternate keyboard-friendly route to the same dashboards.
 
+The room also uses a reversible visual progression system. Each completed task advances a visible room chapter: laptop warmth, plant-and-book detail, chair comfort, desk personality, then window lights and sky motes. Room aesthetics are driven directly by the number of tasks with a `Done` status, so opening a completed task removes the associated upgrade.
+
 - **Assets needed:** A single generated visual target as the art-direction anchor. Room structure, props, clouds, glow halos, particles, UI glass panels, and iconography are procedural or use existing Lucide icons.
 - **Verify:**
   - Every planned room object is visible at the target camera angle and carries a distinct hover state.

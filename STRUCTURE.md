@@ -30,6 +30,8 @@ client/src/
 | `moodSystem` | Applies named Morning, Sunset, Night, Rain, and Cozy palettes to room materials, sky, and lights. |
 | React HUD | Owns panels, keyboard-accessible navigation, task completion UI, timer controls, mood control, and tooltips. |
 
+The world also exposes `setProgress(completedCount)`. React calculates completed task count from typed task state and passes it to the canvas. `DreamDeskWorld` maps the count to procedural upgrade meshes and signals the current chapter back to the HUD; React remains the source of truth for completion status.
+
 ## Interaction Contract
 
 Each room object is named with a stable semantic key: `computer`, `calendar`, `pomodoro`, `bookshelf`, `plant`, `coffee`, and `window`. The world emits `onSelect(key)` and `onHover(key | null)`. React maps keys to panel content, while the world maps the same keys to camera targets and visual halos. This keeps productivity rules out of mesh metadata and keeps the room reusable.

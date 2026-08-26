@@ -19,6 +19,7 @@ export type RoomBuild = {
   windowOverlay: StandardMaterial;
   accentMaterials: StandardMaterial[];
   animated: AnimatedProp[];
+  setProgress: (completedCount: number) => void;
 };
 
 export type RegisterInteractable = (key: DreamDeskTarget, mesh: Mesh, target: Vector3, halo: Mesh) => void;
@@ -72,6 +73,12 @@ export function createDreamRoom(scene: Scene, register: RegisterInteractable): R
   glass.emissiveColor = new Color3(0.11, 0.08, 0.18);
   const accents = [lavender, lavenderDark, blush, mint, amber];
   const animated: AnimatedProp[] = [];
+  const upgrades: Mesh[][] = [[], [], [], [], [], []];
+  const registerUpgrade = (level: number, mesh: Mesh) => {
+    mesh.isVisible = false;
+    upgrades[level].push(mesh);
+    return mesh;
+  };
 
   // Room shell and window.
   box(scene, "floor", 11.4, 0.22, 8.2, new Vector3(0, -0.11, 0.75), creamDark);
@@ -113,6 +120,14 @@ export function createDreamRoom(scene: Scene, register: RegisterInteractable): R
   const laptopScreenMat = material(scene, "laptopScreenMat", "#7264A2");
   laptopScreenMat.emissiveColor = Color3.FromHexString("#6B5CAA");
   laptopScreen.material = laptopScreenMat;
+  const screenBloom = registerUpgrade(1, box(scene, "screenBloom", 1.58, 0.96, 0.04, new Vector3(-0.8, 2.2, 1.77), material(scene, "screenBloomMat", "#FFC6E4")));
+  const screenBloomMat = screenBloom.material as StandardMaterial;
+  screenBloomMat.emissiveColor = Color3.FromHexString("#EE9ECA").scale(0.42);
+  [-1.28, -1.04, -0.8, -0.56, -0.32].forEach((x, index) => {
+    const key = registerUpgrade(1, box(scene, `keyboardGlow${index}`, 0.13, 0.025, 0.38, new Vector3(x, 1.8, 0.98), index % 2 === 0 ? blush : lavender));
+    const keyMat = key.material as StandardMaterial;
+    keyMat.emissiveColor = keyMat.diffuseColor.scale(0.28);
+  });
   register("computer", laptopBase, new Vector3(-0.8, 1.85, 1.15), halo(scene, "computerHalo", new Vector3(-0.8, 1.62, 1.28), "#FFB26F"));
 
   const calendarBody = box(scene, "calendar", 0.64, 0.75, 0.18, new Vector3(1.45, 2.02, 1.5), cream);
@@ -156,6 +171,22 @@ export function createDreamRoom(scene: Scene, register: RegisterInteractable): R
     animated.push({ mesh: leaf, base: leaf.position.clone(), phase: index * 0.75, range: 0.045 });
   });
   register("plant", pot, new Vector3(2.55, 2.1, 1.2), halo(scene, "plantHalo", new Vector3(2.55, 1.62, 1.55), "#8FE0AF"));
+  [0, 1, 2].forEach((index) => {
+    const leaf = registerUpgrade(2, CreateSphere(`grownPlantLeaf${index}`, { diameter: 0.34, segments: 16 }, scene));
+    leaf.position = new Vector3(2.55 + Math.cos(index * 2.1 + 0.5) * 0.5, 2.45 + index * 0.12, 1.55 + Math.sin(index * 2.1 + 0.5) * 0.44);
+    leaf.scaling = new Vector3(0.65, 1.7, 0.65);
+    leaf.material = mint;
+    animated.push({ mesh: leaf, base: leaf.position.clone(), phase: index * 0.92 + 0.4, range: 0.05 });
+  });
+  [0, 1, 2].forEach((index) => registerUpgrade(2, box(scene, `deskBook${index}`, 0.32, 0.12 + index * 0.025, 0.48, new Vector3(2.0, 1.68 + index * 0.08, 0.72), [lavender, blush, mint][index])));
+
+  registerUpgrade(3, box(scene, "chairCushion", 1.12, 0.10, 1.02, new Vector3(0.2, 1.05, -0.05), blush));
+  registerUpgrade(3, box(scene, "chairHeadrest", 0.68, 0.30, 0.12, new Vector3(0.2, 2.30, 0.42), lavender));
+
+  const pencilCup = registerUpgrade(4, cylinder(scene, "pencilCup", 0.28, 0.42, new Vector3(1.95, 1.78, 1.95), creamDark));
+  [0, 1, 2].forEach((index) => registerUpgrade(4, box(scene, `pencil${index}`, 0.045, 0.55, 0.045, new Vector3(1.88 + index * 0.07, 2.08, 1.95), [amber, blush, lavender][index])));
+  registerUpgrade(4, box(scene, "deskCard", 0.68, 0.45, 0.05, new Vector3(1.16, 1.92, 2.35), cream));
+  pencilCup.rotation.z = -0.03;
 
   const lampBase = cylinder(scene, "lampBase", 0.45, 0.12, new Vector3(-2.75, 1.62, 1.7), charcoal);
   const lampStem = box(scene, "lampStem", 0.09, 0.85, 0.09, new Vector3(-2.75, 2.02, 1.7), charcoal);
@@ -166,5 +197,31 @@ export function createDreamRoom(scene: Scene, register: RegisterInteractable): R
   [2.75, 3.05, 3.35].forEach((y, index) => box(scene, `statLine${index}`, 0.9 - index * 0.12, 0.055, 0.04, new Vector3(-3.05, y, 4.24), [amber, lavender, blush][index]));
   register("statistics", board, new Vector3(-2.95, 3.0, 3.35), halo(scene, "boardHalo", new Vector3(-2.95, 2.35, 3.1), "#FFB26F"));
 
-  return { windowOverlay, accentMaterials: accents, animated };
+  [-1.55, -0.8, -0.05, 0.7, 1.45, 2.2, 2.95].forEach((x, index) => {
+    const light = registerUpgrade(5, CreateSphere(`windowLight${index}`, { diameter: 0.12, segments: 12 }, scene));
+    light.position = new Vector3(x, 4.62, 4.16);
+    light.material = amber;
+    const lightMat = light.material as StandardMaterial;
+    lightMat.emissiveColor = Color3.FromHexString("#FFC47E").scale(0.8);
+  });
+  [0, 1, 2, 3, 4].forEach((index) => {
+    const mote = registerUpgrade(5, CreateSphere(`skyMote${index}`, { diameter: 0.07, segments: 10 }, scene));
+    mote.position = new Vector3(-0.8 + index * 0.65, 3.6 + (index % 2) * 0.32, 3.98);
+    mote.material = amber;
+    const moteMat = mote.material as StandardMaterial;
+    moteMat.emissiveColor = Color3.FromHexString("#FFD5A2").scale(1.1);
+    animated.push({ mesh: mote, base: mote.position.clone(), phase: index * 0.7, range: 0.14 });
+  });
+
+  const setProgress = (completedCount: number) => {
+    const level = Math.max(0, Math.min(5, completedCount));
+    upgrades.forEach((meshes, milestone) => {
+      if (milestone === 0) return;
+      meshes.forEach((mesh) => { mesh.isVisible = milestone <= level; });
+    });
+    laptopScreenMat.emissiveColor = level >= 1 ? Color3.FromHexString("#F0A6D0").scale(0.72) : Color3.FromHexString("#6B5CAA");
+  };
+
+  setProgress(0);
+  return { windowOverlay, accentMaterials: accents, animated, setProgress };
 }
