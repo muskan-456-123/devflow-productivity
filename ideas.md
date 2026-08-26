@@ -76,3 +76,9 @@ DevFlow will shift from the warm editorial workbench into **Soft Signal Studio**
 - Periwinkle provides spatial orientation and quiet focus. **Flow Orange** is never decorative: it marks the live focus action, an urgent developer signal, a current progress segment, or a task-capture action.
 - The daily header and key score use DM Serif Display for editorial contrast. Operational labels, figures, navigation, task metadata, and controls use compact Space Grotesk with specific developer language about commits, reviews, threads, release checks, and blockers.
 - At desktop width, the agenda remains a narrow right-side signal stack while the focus timer and calendar form an uneven instrument pair. This keeps the composition distinct from a uniform dashboard-card grid.
+
+## DreamDesk — Active Ground-Truth Direction
+
+The user has now supplied a new product brief and two cozy-workspace visual references. **DreamDesk supersedes the previous DevFlow dashboard direction on the home route.** The home experience is an interactive browser room, not a conventional SaaS board: a soft lavender-and-cream diorama study, warm evening window, desk objects that open productivity tools, a gentle translucent HUD, and mood-switching light.
+
+The supplied images are mood references only. DreamDesk retains original room geometry, a custom floating-cloud view, a new moon-and-lamp brand mark, different copy, and object-to-productivity mappings. The visual emphasis is on a tangible desk world with calm discovery; periwinkle, blush, twilight blue, cream, and warm amber replace the former workbench palette. The previous full-page style review showed only the fixed-canvas background because full-page capture hides fixed game chrome, so its dashboard-composition recommendations conflict with the user’s superseding DreamDesk brief and are not adopted for this milestone.

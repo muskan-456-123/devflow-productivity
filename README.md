@@ -1,77 +1,69 @@
-# DevFlow — Developer Productivity Dashboard
+# DreamDesk — Interactive Productivity Room
 
-DevFlow is a responsive developer productivity dashboard created for **Innovation Hacks Full Stack Development Internship — Task 1**. It demonstrates a complete frontend product experience with accessible navigation, user identity, task progress, client-side search and filters, a focus timer, calendar view, and meaningful loading, empty, and error states.
+DreamDesk is an original **interactive 3D productivity room** built for the Innovation Hacks Full Stack Development Internship. Instead of presenting productivity as a conventional grid of cards, it turns a cozy study into the dashboard: the desk computer opens tasks, the paper calendar opens scheduling, the pomodoro clock starts focus time, the bookshelf keeps notes, the plant tracks habits, the coffee cup starts a break, the window changes the room’s mood, and the wall board presents work statistics.
 
-The finished experience combines **Soft Signal Studio** with DevFlow’s original **Kinetic Workbench** system. Cloud-grey surroundings, white workspace boards, periwinkle orientation cues, and tactile paper-studio artwork establish a calm visual baseline. Ledger rules, calibration bands, stamped metadata, and **Flow Orange** momentum signals keep the interface specific to developer work rather than a generic wellness dashboard.
+The current milestone delivers the fully interactive **DreamDesk dashboard foundation**: a responsive browser room built with Babylon.js, accessible HTML panels, typed task data, mood controls, an original visual direction, and visible Task 1 states.
 
-## Visual Preview
+## Experience Preview
 
-| Desktop workspace | Mobile workspace |
-| --- | --- |
-| ![DevFlow desktop dashboard](https://files.manuscdn.com/user_upload_by_module/session_file/310519663870362017/ieFjvlrlyTyMHtTd.png) | ![DevFlow mobile dashboard](https://files.manuscdn.com/user_upload_by_module/session_file/310519663870362017/fHTDtLsGsOgPsLLB.png) |
+DreamDesk is designed as a warm, elevated diorama study with a twilight cloud view, lavender and cream materials, blush-pink details, and amber action cues. It is inspired by the supplied cozy-workspace references only at a broad mood level; the room geometry, visual assets, name, interactions, and productivity content are original.
 
-## What It Demonstrates
+## Room Interaction Map
 
-| Requirement | Implementation in DevFlow |
-| --- | --- |
-| Dashboard landing page | A daily developer workspace with a visual overview, focus instrument, calendar, current task queue, and commit note. |
-| Accessible navigation | A persistent desktop rail and compact mobile menu provide labelled, keyboard-accessible wayfinding. |
-| User/profile section | The sidebar profile card and header controls establish a visible personal workspace context. |
-| Project and task cards | The queue uses reusable task rows, task kind labels, completion controls, and an active developer-signal treatment. |
-| Progress indicators | Calibrated focus and daily momentum bands present live progress without generic percentage-only bars. |
-| Search and filter functionality | The queue filters instantly by task text and by All, Open, or Done state. |
-| Responsive design | The full desktop board becomes an ordered, single-column mobile experience, preserving the core controls. |
-| Dynamic states | Loading, empty, and error versions of the current queue are available from the queue overflow control. |
-| Reusable architecture | The experience is divided into a reusable brand mark, sidebar, typed task data, and a focused home composition. |
+| Room object | Dashboard action | Included interaction |
+| --- | --- | --- |
+| Computer | Tasks & Projects | Search, state filters, task completion, and loading/empty/error previews. |
+| Desk calendar | Calendar | Monthly date board and upcoming review cards. |
+| Pomodoro clock | Focus | Functional 25-minute start, pause, and reset controls. |
+| Bookshelf | Notes | Curated reference notes and note capture affordance. |
+| Plant | Habits | A small habit interaction with a seven-day rhythm display. |
+| Coffee cup | Break Mode | A deliberate seven-minute break control. |
+| Sky window | Room moods | Morning, Sunset, Night, Rain, and Cozy scene palettes. |
+| Wall board | Statistics | Open threads, streak, completed loops, and weekly rhythm. |
+
+## Interaction Design
+
+Hovering a supported room object shows an in-scene highlight and contextual label. Selecting an object focuses the Babylon camera toward its location and opens the matching accessible glass panel. The compact dock provides a keyboard-friendly alternative to the same controls. Use the close button in a panel, or select **Home** in the dock, to return to the full-room overview.
+
+For deterministic visual review, append `?demo` to open Tasks on load, or use a targeted view such as `?demo=pomodoro`, `?demo=window`, or `?demo=statistics`.
 
 ## Technology Stack
 
-This frontend uses **React 19**, **TypeScript**, **Vite**, **Tailwind CSS 4**, and **Lucide React**. The static project scaffold also provides accessible UI primitives, including the button component used by the dashboard controls.
+DreamDesk is built with **React 19**, **TypeScript**, **Vite**, **Babylon.js**, **Tailwind CSS 4**, and **Lucide React**. React owns the accessible user interface; Babylon owns the procedural room, camera, lights, interactive meshes, object highlights, and gentle prop animation.
 
 ## Local Setup
 
-The Task 1 dashboard has no server-side service or required custom secrets. After cloning, install dependencies and run the Vite development server.
+DreamDesk has no required custom environment variables or backend service at this milestone. Install packages and run the Vite development server.
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-To verify the project before submission, run the type check and production build.
+Use the following commands before submitting changes.
 
 ```bash
 pnpm run check
 pnpm run build
 ```
 
-The Vite configuration explicitly uses secure HMR through the public preview port, which keeps hot reload functional behind an HTTPS preview proxy.
-
-## Environment Variables
-
-Task 1 is a frontend-only dashboard using typed local mock data, so **no custom environment variables are required**. No `.env` file is needed to run this project. When you connect it to Task 2’s API, document only non-secret public placeholders in `.env.example`, place real local values in an ignored `.env` file, and never commit credentials.
-
-## Project Structure
+## Structure
 
 | Path | Purpose |
 | --- | --- |
-| `client/src/pages/Home.tsx` | Composes the responsive Soft Signal Studio dashboard and manages local task, filter, timer, and state-preview interactions. |
-| `client/src/components/DashboardSidebar.tsx` | Provides the reusable desktop workspace rail, profile block, and focus callout. |
-| `client/src/components/DevflowMark.tsx` | Provides the reusable DevFlow icon and wordmark treatment. |
-| `client/src/lib/dashboard-data.ts` | Retains typed dashboard data examples for extension during the later API and database tasks. |
-| `client/src/index.css` | Defines the global design tokens, animation rules, and reusable Kinetic Workbench annotation treatment. |
-| `ideas.md` | Captures the original visual rationale, supplied-reference interpretation, and accepted style decisions. |
+| `client/src/components/GameCanvas.tsx` | Lifecycle-safe React wrapper for the full-screen Babylon canvas. |
+| `client/src/game/DreamDeskWorld.ts` | Camera focus, object selection, scene mood, prop animation, and cleanup. |
+| `client/src/game/roomFactory.ts` | Procedural study-room furniture, clickable objects, highlights, and window scene. |
+| `client/src/components/dreamdesk/DreamDeskHUD.tsx` | Glass navigation, profile, greeting, context tooltip, and stats chips. |
+| `client/src/components/dreamdesk/ProductivityPanels.tsx` | Accessible task, calendar, focus, notes, habits, break, mood, and statistics panels. |
+| `client/src/lib/dreamdesk-data.ts` | Typed room destinations, mood names, navigation, and task data. |
+| `PLAN.md` | Interaction risks and concrete verification criteria. |
+| `STRUCTURE.md` | Rendering, UI, and world ownership boundaries. |
+| `ASSETS.md` | Generated visual direction and the procedural room-asset map. |
 
-## Interaction Notes
+## What Comes Next
 
-The timer is functional: select the orange focus action to start or pause the 28-minute commit-current session, and use Reset to restore it. In the current queue, search by terms such as `Atlas`, `review`, or `API`, then combine the result with the state filters. Each task circle toggles completion. The queue overflow control cycles through loading, empty, error, and live states, making all required dynamic view states easy to demonstrate without an API.
-
-## Demo Walkthrough and LinkedIn Copy
-
-Use [`DEMO_SCRIPT.md`](./DEMO_SCRIPT.md) to record a concise 2–5 minute walkthrough, then customise [`LINKEDIN_POST.md`](./LINKEDIN_POST.md) before publishing. Add your repository, demo video, optional deployment URL, and the official Innovation Hacks LinkedIn tag before submitting.
-
-## Notes for Reviewers
-
-All dashboard content is intentional mock product data for Task 1. The project does not claim to be connected to a backend yet; Tasks 2–4 can replace this data layer with the internship API, persistent database, authentication, and an AI-powered feature.
+This first milestone deliberately avoids imported 3D models, free-roaming controls, audio autoplay, physics, and full game-like progression so the core room remains fast and reliable. The next expansion can add true mood effects such as rain particles, a deeper notes editor, browser-saved task state, productivity-driven room progression, and gesture-unlocked ambient sound.
 
 ## License
 

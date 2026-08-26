@@ -1,100 +1,58 @@
-/*
- * Soft Signal Studio global foundation: cloud-grey surroundings, gentle white boards, periwinkle orientation, and Flow Orange for only active urgency.
- */
+/* DreamDesk foundation: an immersive twilight canvas with calm glass controls, lavender shadows, and warm amber interaction cues. */
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius: 1rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
-  --color-input: var(--input);
   --color-ring: var(--ring);
 }
 
-:root {
-  --radius: 0.9rem;
-  --background: #EEF0F6;
-  --foreground: #353248;
-  --card: #FFFFFF;
-  --card-foreground: #353248;
-  --popover: #FFFFFF;
-  --popover-foreground: #353248;
-  --primary: #7765C8;
-  --primary-foreground: #FFFFFF;
-  --secondary: #F4F3F8;
-  --secondary-foreground: #514D62;
-  --muted: #F4F3F8;
-  --muted-foreground: #8B8798;
-  --accent: #F0EDFB;
-  --accent-foreground: #5D4EAB;
-  --destructive: #B85D72;
-  --destructive-foreground: #FFFFFF;
-  --border: #ECEAF2;
-  --input: #E8E5EF;
-  --ring: #7765C8;
-}
+:root { --background: #201D35; --foreground: #FFF9F3; --primary: #F7A870; --primary-foreground: #322948; --border: rgba(255, 255, 255, 0.16); --ring: #FFD0A5; }
 
 @layer base {
   * { @apply border-border outline-ring/50; }
-  html { min-width: 320px; background: #EEF0F6; }
-  body { @apply bg-background text-foreground; font-family: "Space Grotesk", sans-serif; }
-  button:not(:disabled), [role="button"]:not([aria-disabled="true"]), [type="button"]:not(:disabled), [type="submit"]:not(:disabled), [type="reset"]:not(:disabled), a[href], select:not(:disabled), input[type="checkbox"]:not(:disabled), input[type="radio"]:not(:disabled) { @apply cursor-pointer; }
-  ::selection { background: rgba(119, 101, 200, 0.18); color: #353248; }
+  html, body, #root { min-height: 100%; margin: 0; }
+  body { overflow: hidden; background: #211D35; color: #FFF9F3; font-family: "Space Grotesk", sans-serif; }
+  button, input { font: inherit; }
+  button:not(:disabled), [role="button"]:not([aria-disabled="true"]), input { cursor: pointer; }
+  button:focus-visible, input:focus-visible { outline: 2px solid #FFD0A5; outline-offset: 3px; }
 }
 
-@layer components {
-  .workbench-cue {
-    position: relative;
-  }
-  .workbench-cue::before {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    left: 22px;
-    right: 22px;
-    top: 18px;
-    border-top: 1px solid rgba(92, 82, 125, 0.08);
-  }
-  .workbench-cue::after {
-    content: "···";
-    pointer-events: none;
-    position: absolute;
-    right: 18px;
-    bottom: 14px;
-    color: rgba(119, 101, 200, 0.22);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 3px;
-  }
-}
+.dreamdesk-app { position: relative; min-height: 100dvh; overflow: hidden; isolation: isolate; background: radial-gradient(circle at 78% 14%, #9D78A9 0, #52476E 33%, #25223A 70%); }
+.dreamdesk-app::after { content: ""; pointer-events: none; position: absolute; inset: 0; z-index: 1; background: radial-gradient(circle at 50% 48%, transparent 28%, rgba(26, 21, 43, 0.18) 100%); }
+.dreamdesk-canvas { position: fixed; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; outline: none; cursor: grab; }
+.dreamdesk-hud { position: fixed; inset: 0; z-index: 5; pointer-events: none; }
 
-@media (prefers-reduced-motion: no-preference) {
-  main > * { animation: soft-signal-enter 420ms cubic-bezier(0.23, 1, 0.32, 1) both; }
-  main > *:nth-child(2) { animation-delay: 50ms; }
-}
+.dream-topbar { position: absolute; top: 22px; left: 24px; right: 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.dream-brand, .dream-profile, .dream-stat-stack button, .dream-dock, .dream-tooltip { border: 1px solid rgba(255,255,255,0.24); background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(236,218,255,0.12)); box-shadow: 0 16px 40px rgba(24, 18, 47, 0.25); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.dream-panel { border: 1px solid rgba(255,255,255,0.52); background: linear-gradient(145deg, rgba(255,250,255,0.80), rgba(228,209,239,0.61)); box-shadow: 0 22px 55px rgba(24, 18, 47, 0.32); backdrop-filter: blur(24px) saturate(1.15); -webkit-backdrop-filter: blur(24px) saturate(1.15); }
+.dream-brand { display: flex; align-items: center; gap: 10px; border-radius: 17px; padding: 8px 14px 8px 9px; }
+.dream-brand img { width: 34px; height: 34px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(30,20,54,0.2)); }
+.dream-brand strong { display: block; font-family: "DM Serif Display", serif; font-size: 20px; font-weight: 400; letter-spacing: -0.045em; }
+.dream-brand span { display: block; margin-top: 1px; color: rgba(255,255,255,0.68); font-size: 7px; font-weight: 700; letter-spacing: 0.15em; }
+.dream-profile { display: flex; align-items: center; gap: 8px; border-radius: 17px; padding: 7px 12px 7px 7px; }
+.profile-orb { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 12px; background: linear-gradient(145deg, #FFD0A5, #C18AD5); color: #43324F; font-size: 9px; font-weight: 800; }
+.dream-profile strong, .dream-profile small { display: block; }
+.dream-profile strong { font-size: 11px; }.dream-profile small { margin-top: 1px; color: rgba(255,255,255,0.68); font-size: 8px; }
+.dream-greeting { position: absolute; top: 112px; left: 36px; max-width: 310px; text-shadow: 0 3px 16px rgba(24,18,47,0.3); }
+.dream-greeting p { display: flex; align-items: center; gap: 6px; margin: 0 0 8px; color: #FFD0A5; font-size: 9px; font-weight: 700; letter-spacing: 0.16em; }.dream-greeting h1 { margin: 0; font-family: "DM Serif Display", serif; font-size: clamp(30px, 3vw, 44px); font-weight: 400; line-height: 0.98; letter-spacing: -0.06em; }.dream-greeting h1 em { color: #FFD0A5; font-style: italic; }.dream-greeting > span { display: block; max-width: 250px; margin-top: 10px; color: rgba(255,255,255,0.74); font-size: 11px; line-height: 1.45; }
+.dream-stat-stack { position: absolute; right: 26px; top: 118px; display: grid; gap: 8px; }.dream-stat-stack button { display: flex; width: 192px; align-items: center; gap: 9px; border-radius: 15px; padding: 9px 11px; color: white; text-align: left; transition: transform 160ms cubic-bezier(.23,1,.32,1), background 160ms; }.dream-stat-stack button:hover { transform: translateX(-3px); background: rgba(255,255,255,0.28); }.dream-stat-stack svg { color: #FFD0A5; }.dream-stat-stack small, .dream-stat-stack strong { display: block; }.dream-stat-stack small { color: rgba(255,255,255,0.68); font-size: 8px; letter-spacing: .06em; }.dream-stat-stack strong { margin-top: 2px; font-size: 11px; }
+.dream-tooltip { position: absolute; left: 50%; top: 83px; display: flex; min-width: 174px; align-items: center; gap: 8px; transform: translateX(-50%); border-radius: 15px; padding: 8px 12px; animation: dream-float 220ms cubic-bezier(.23,1,.32,1) both; }.tooltip-dot { width: 8px; height: 8px; border-radius: 50%; background: #FFD0A5; box-shadow: 0 0 14px #FFD0A5; }.dream-tooltip strong, .dream-tooltip small { display: block; }.dream-tooltip strong { font-size: 10px; }.dream-tooltip small { margin-top: 1px; color: rgba(255,255,255,.7); font-size: 8px; }
+.dream-dock { position: absolute; bottom: 23px; left: 50%; display: flex; align-items: center; gap: 4px; transform: translateX(-50%); border-radius: 22px; padding: 6px; }.dream-dock button { display: flex; min-width: 48px; flex-direction: column; align-items: center; gap: 3px; border: 0; border-radius: 16px; background: transparent; padding: 8px 9px; color: rgba(255,255,255,0.7); font-size: 8px; font-weight: 700; transition: all 160ms cubic-bezier(.23,1,.32,1); }.dream-dock button:hover, .dream-dock button.active { background: rgba(255,255,255,0.24); color: white; }.dream-dock button.active svg { color: #FFD0A5; filter: drop-shadow(0 0 6px rgba(255,208,165,.85)); }
 
-@keyframes soft-signal-enter {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.dream-panel { position: absolute; top: 91px; bottom: 96px; right: 26px; width: min(410px, calc(100vw - 52px)); overflow: auto; border-radius: 24px; color: #352B49; animation: dream-panel-in 340ms cubic-bezier(.23,1,.32,1) both; }.dream-panel-header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 1px solid rgba(79,57,107,0.14); padding: 20px 20px 15px; }.dream-panel-kicker { margin: 0 0 3px; color: #8B6CB9; font-size: 9px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }.dream-panel h2 { margin: 0; font-family: "DM Serif Display", serif; font-size: 27px; font-weight: 400; letter-spacing: -.05em; }.dream-icon-button { display: flex; width: 32px; height: 32px; align-items: center; justify-content: center; border: 1px solid rgba(96,69,130,.12); border-radius: 11px; background: rgba(255,255,255,.42); color: #594875; transition: background 160ms; }.dream-icon-button:hover { background: rgba(255,255,255,.8); }.dream-panel-content { padding: 17px 20px 20px; }
+.dream-search { display: flex; height: 42px; align-items: center; gap: 8px; border: 1px solid rgba(96,69,130,.12); border-radius: 13px; background: rgba(255,255,255,.38); padding: 0 12px; color: #896FA7; }.dream-search input { width: 100%; border: 0; background: transparent; color: #352B49; font-size: 12px; outline: none; }.dream-search input::placeholder { color: #A293B3; }.dream-filter-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }.dream-filter-row button { border: 1px solid rgba(96,69,130,.12); border-radius: 9px; background: rgba(255,255,255,.25); padding: 6px 8px; color: #705D83; font-size: 9px; font-weight: 700; }.dream-filter-row button.active { border-color: transparent; background: #6D5A99; color: white; }.dream-filter-row .state-cycle { margin-left: auto; color: #A56968; letter-spacing: .13em; }.dream-task-list { display: grid; gap: 7px; margin-top: 13px; }.dream-task { display: flex; align-items: flex-start; gap: 9px; border: 1px solid rgba(96,69,130,.12); border-radius: 14px; background: rgba(255,255,255,.35); padding: 10px; transition: transform 160ms, background 160ms; }.dream-task:hover { transform: translateY(-1px); background: rgba(255,255,255,.53); }.dream-task.is-done { opacity: .62; }.task-check { display: flex; width: 19px; height: 19px; flex: 0 0 auto; align-items: center; justify-content: center; border: 1px solid #C7B8D5; border-radius: 7px; background: rgba(255,255,255,.65); color: transparent; }.dream-task.is-done .task-check { border-color: #7DB695; background: #7DB695; color: white; }.dream-task h3 { margin: 0; color: #403450; font-size: 11px; line-height: 1.35; }.dream-task.is-done h3 { text-decoration: line-through; }.dream-task p { display: flex; align-items: center; gap: 5px; margin: 4px 0 0; color: #8D809C; font-size: 8px; }.dream-task p span { display: inline-block; width: 5px; height: 5px; border-radius: 50%; }.task-status { flex: 0 0 auto; border-radius: 7px; background: rgba(230,217,248,.76); padding: 4px 5px; color: #755C9C; font-size: 7px; font-weight: 800; }.dream-skeleton { height: 61px; border-radius: 14px; background: linear-gradient(90deg, rgba(255,255,255,.3), rgba(244,235,251,.78), rgba(255,255,255,.3)); background-size: 200% 100%; animation: dream-shimmer 1.2s infinite; }.dream-empty { display: grid; min-height: 242px; place-content: center; justify-items: center; text-align: center; }.dream-empty > span { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 15px; background: #F2E5FC; color: #795D9E; }.dream-empty h3 { margin: 12px 0 3px; font-size: 15px; }.dream-empty p, .dream-panel-note { max-width: 250px; margin: 0; color: #8D809C; font-size: 10px; line-height: 1.5; }.dream-empty button, .dream-text-action { margin-top: 12px; border: 0; background: none; color: #A65E55; font-size: 10px; font-weight: 800; }.dream-panel-note { margin: 12px auto 0; text-align: center; }
+.calendar-title { display: flex; align-items: center; gap: 7px; color: #594875; font-size: 13px; font-weight: 800; }.calendar-title svg { color: #AD6F83; }.dream-calendar { margin-top: 14px; border: 1px solid rgba(96,69,130,.12); border-radius: 17px; background: rgba(255,255,255,.34); padding: 13px; }.calendar-days, .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }.calendar-days { margin-bottom: 7px; color: #A294B3; font-size: 8px; font-weight: 800; }.calendar-grid button { display: grid; aspect-ratio: 1; place-items: center; border: 0; border-radius: 9px; background: transparent; color: #574A68; font-size: 9px; }.calendar-grid button:hover { background: rgba(202,181,230,.35); }.calendar-grid button.selected { background: #7864A8; color: white; box-shadow: 0 6px 15px rgba(83,59,117,.25); }.calendar-grid button.faded { color: #BFB4CA; }.schedule-card { display: flex; align-items: flex-start; gap: 9px; margin-top: 10px; border-radius: 13px; background: rgba(255,255,255,.35); padding: 10px; }.schedule-dot { width: 7px; height: 7px; margin-top: 4px; border-radius: 50%; background: #FF9E6E; box-shadow: 0 0 10px #FFB588; }.schedule-dot.mint { background: #7FBEA2; box-shadow: 0 0 10px #A3D9B6; }.schedule-card strong { display: block; color: #51405E; font-size: 10px; }.schedule-card p { margin: 3px 0 0; color: #8D809C; font-size: 8px; }
+.focus-panel { text-align: center; }.focus-orbit { display: grid; width: 180px; height: 180px; margin: 3px auto 16px; place-content: center; border-radius: 50%; background: conic-gradient(#FFAC72 var(--focus-progress), rgba(129,102,165,.14) 0); box-shadow: inset 0 0 0 7px rgba(255,255,255,.27), 0 16px 30px rgba(102,68,125,.16); }.focus-orbit::before { content: ""; position: absolute; width: 156px; height: 156px; border-radius: 50%; background: rgba(246,236,255,.66); }.focus-orbit span, .focus-orbit small { position: relative; z-index: 1; }.focus-orbit span { font-family: "DM Serif Display", serif; color: #4F3E60; font-size: 42px; letter-spacing: -.08em; }.focus-orbit small { margin-top: 1px; color: #91759F; font-size: 9px; }.focus-panel > p { max-width: 270px; margin: 0 auto; color: #83738F; font-size: 11px; line-height: 1.5; }.focus-actions { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }.focus-actions button, .break-panel button { display: inline-flex; align-items: center; gap: 6px; border: 0; border-radius: 12px; padding: 10px 13px; font-size: 10px; font-weight: 800; }.focus-start, .break-panel button { background: #F49B6B; color: #FFF7EF; box-shadow: 0 8px 16px rgba(208,109,75,.22); }.focus-reset { background: rgba(255,255,255,.42); color: #705C80; }.focus-dots { display: flex; gap: 5px; margin-top: 18px; }.focus-dots span { flex: 1; height: 4px; border-radius: 4px; background: rgba(116,89,146,.14); }.focus-dots span.lit { background: #FFAC72; }
+.dream-panel-copy { margin: 0 0 13px; color: #81718D; font-size: 11px; line-height: 1.55; }.note-stack { display: grid; gap: 8px; }.note-card { display: flex; gap: 9px; border-radius: 14px; background: rgba(255,255,255,.35); padding: 11px; }.note-card svg { flex: 0 0 auto; color: #A5778C; }.note-card span { color: #A696B1; font-size: 8px; font-weight: 800; letter-spacing: .12em; }.note-card p { margin: 4px 0 0; color: #554363; font-size: 11px; line-height: 1.35; }.habit-panel { text-align: center; }.habit-plant { display: grid; width: 142px; height: 142px; margin: 4px auto 13px; place-content: center; border-radius: 50%; background: radial-gradient(circle, #DDF3DD, #B9D5C8); color: #4B846B; box-shadow: 0 12px 26px rgba(76,133,106,.17); }.habit-plant span { margin-top: 6px; font-size: 9px; font-weight: 800; }.habit-check { display: inline-flex; align-items: center; gap: 7px; border: 1px solid rgba(86,125,101,.18); border-radius: 12px; background: rgba(255,255,255,.35); padding: 10px 12px; color: #5B7869; font-size: 10px; font-weight: 700; }.habit-check.done { background: #7FBA99; color: white; }.habit-week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-top: 15px; }.habit-week span { display: grid; height: 31px; place-items: center; border-radius: 9px; background: rgba(255,255,255,.32); color: #988A9F; font-size: 8px; font-weight: 800; }.habit-week span.complete { background: #A4D5B7; color: #356B51; }.break-panel { padding: 16px 6px; text-align: center; }.coffee-steam { display: grid; width: 98px; height: 98px; margin: 0 auto 15px; place-content: center; border-radius: 50%; background: #FFE7CF; color: #BF7B55; box-shadow: 0 15px 24px rgba(195,123,85,.2); }.break-panel h3 { margin: 0; color: #59445B; font-family: "DM Serif Display", serif; font-size: 23px; font-weight: 400; }.break-panel p { max-width: 250px; margin: 8px auto 15px; color: #887589; font-size: 11px; line-height: 1.55; }.mood-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }.mood-grid button { display: grid; grid-template-columns: 18px 1fr auto; align-items: center; gap: 8px; border: 1px solid rgba(96,69,130,.12); border-radius: 13px; background: rgba(255,255,255,.34); padding: 10px; color: #625170; text-align: left; transition: transform 160ms, background 160ms; }.mood-grid button:hover { transform: translateY(-1px); background: rgba(255,255,255,.55); }.mood-grid button.selected { border-color: #D49C86; background: rgba(255,226,207,.7); color: #704456; }.mood-grid span { font-size: 10px; font-weight: 800; }.mood-grid em { color: #9F869E; font-size: 8px; font-style: normal; font-weight: 800; }.stats-panel { display: grid; gap: 10px; }.stat-big { border-radius: 17px; background: linear-gradient(135deg, rgba(255,210,165,.7), rgba(235,213,255,.55)); padding: 18px; }.stat-big span, .stat-big small { display: block; }.stat-big span { color: #966779; font-size: 9px; font-weight: 800; letter-spacing: .12em; }.stat-big strong { display: block; margin: 4px 0; color: #4C3B5B; font-family: "DM Serif Display", serif; font-size: 39px; font-weight: 400; letter-spacing: -.06em; }.stat-big small { color: #8A718C; font-size: 9px; }.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }.stat-grid div { border-radius: 14px; background: rgba(255,255,255,.35); padding: 11px; }.stat-grid svg { color: #A37690; }.stat-grid span, .stat-grid strong { display: block; }.stat-grid span { margin-top: 8px; color: #917F97; font-size: 8px; }.stat-grid strong { margin-top: 2px; color: #51405D; font-size: 17px; }
+
+@keyframes dream-panel-in { from { opacity: 0; transform: translateX(20px) scale(.98); } to { opacity: 1; transform: translateX(0) scale(1); } } @keyframes dream-float { from { opacity: 0; transform: translate(-50%, -5px); } to { opacity: 1; transform: translate(-50%, 0); } } @keyframes dream-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+@media (max-width: 760px) { body { overflow: auto; }.dream-topbar { top: 14px; left: 14px; right: 14px; }.dream-profile { padding: 6px; }.dream-profile div { display: none; }.dream-greeting { top: 82px; left: 18px; max-width: 245px; }.dream-greeting h1 { font-size: 31px; }.dream-greeting > span { display: none; }.dream-stat-stack { top: auto; right: 14px; bottom: 93px; }.dream-stat-stack button { width: 151px; padding: 7px 8px; }.dream-stat-stack button:nth-child(n+2) { display: none; }.dream-dock { bottom: 13px; max-width: calc(100vw - 24px); overflow-x: auto; }.dream-dock button { min-width: 44px; padding: 7px; }.dream-dock button span { font-size: 7px; }.dream-panel { top: auto; right: 12px; bottom: 84px; left: 12px; width: auto; max-height: min(70dvh, 630px); }.dream-tooltip { top: 69px; }.dream-brand strong { font-size: 18px; }.dream-brand span { font-size: 6px; } }
