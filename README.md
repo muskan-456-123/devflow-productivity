@@ -80,6 +80,10 @@ pnpm run build
 
 This first milestone deliberately avoids imported 3D models, free-roaming controls, audio autoplay, physics, and full game-like progression so the core room remains fast and reliable. The next expansion can add true mood effects such as rain particles, a deeper notes editor, browser-saved task state, productivity-driven room progression, and gesture-unlocked ambient sound.
 
+## Task 2 Submission
+
+The complete backend handoff checklist, including environment setup, endpoint demo flow, verification commands, deterministic DreamDesk API-state previews, and recording guidance is in [`TASK2_SUBMISSION.md`](./TASK2_SUBMISSION.md). Endpoint contracts remain in [`API.md`](./API.md), and environment details are in [`ENVIRONMENT.md`](./ENVIRONMENT.md).
+
 ## License
 
 This project is provided for internship evaluation and portfolio use.

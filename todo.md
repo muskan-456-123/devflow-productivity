@@ -48,7 +48,7 @@
 - [x] Add environment configuration and secrets guidance without committing credentials.
 - [x] Write API documentation and endpoint examples.
 - [x] Add automated API tests and verify the dashboard data path.
-- [ ] Save a final Task 2 checkpoint and prepare backend submission guidance.
+- [x] Save a final Task 2 checkpoint and prepare backend submission guidance.
 
 - [x] Add automated tests for successful user, project, and task create/read/update/delete flows, task status updates, ownership, and not-found cases.
 - [x] Connect the DreamDesk dashboard task/project data path to the backend and verify loading, success, empty, and error states against API responses.
@@ -56,3 +56,4 @@
 - [x] Add a user delete endpoint or explicitly document why user deletion is excluded from the authenticated user-management contract.
 - [x] Render visible DreamDesk backend-state feedback for loading, connected, empty, fallback, and error API responses.
 - [x] Add a deterministic API-state verification path for the dashboard and capture each state before the final checkpoint.
+- [x] Prepare and link a dedicated Task 2 backend submission guide with endpoint demo, environment, tests, build, and recording instructions.
