@@ -83,3 +83,9 @@ This first milestone deliberately avoids imported 3D models, free-roaming contro
 ## License
 
 This project is provided for internship evaluation and portfolio use.
+
+## Task 2 Backend
+
+The project now includes a database-backed REST API under `/api/v1` for users, projects, and tasks. It includes ownership-aware project and task access, write validation, explicit task status updates, centralized error envelopes, and meaningful HTTP status codes. See [`API.md`](./API.md) for the endpoint reference and curl examples, and [`ENVIRONMENT.md`](./ENVIRONMENT.md) for configuration and secret-handling guidance.
+
+Run `pnpm run check`, `pnpm test`, and `pnpm run build` before submitting the backend milestone.
